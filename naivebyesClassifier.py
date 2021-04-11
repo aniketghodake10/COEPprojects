@@ -77,6 +77,7 @@ dff2 = dff1.append(dff_temp,ignore_index=True)
 
 # print('\n',dff2)
 
+print('For fog type Nonee instead of None')
 instancee = [x for x in input('Enter instance attributes and give space after each attribute Ex. Weekday Winter High None  =====  ').split()]
 
 probability = {}
