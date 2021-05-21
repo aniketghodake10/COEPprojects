@@ -53,6 +53,7 @@ find_package(catkin REQUIRED COMPONENTS
    FILES
    matlist.msg
    add.msg
+   fiboo.msg
 #   Message2.msg
  )
 
@@ -61,6 +62,7 @@ add_service_files(
    FILES
    addit.srv
    multimatrix.srv
+   Fibonaccii.srv
 )
 
 ## Generate actions in the 'action' folder
