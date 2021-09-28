@@ -1,0 +1,44 @@
+int digital_inputt= 2;
+int red_light_pin= 6;
+int green_light_pin = 7;
+int blue_light_pin = 5;
+void setup(){
+ Serial.begin(9600);
+ pinMode(digital_inputt, INPUT);
+ pinMode(red_light_pin, OUTPUT);
+  pinMode(green_light_pin, OUTPUT);
+  pinMode(blue_light_pin, OUTPUT);
+}
+void loop(){
+  int val = digitalRead(digital_inputt);
+ // send text to the Serial Monitor
+ //Serial.println("Hello, world!");
+ if (val == 0){
+  RGB_color(255, 0, 0); // Red
+  delay(10000);
+  RGB_color(0, 255, 0); // Green
+  delay(10000);
+  RGB_color(0, 0, 255); // Blue
+  delay(10000);
+  RGB_color(255, 255, 125); // Raspberry
+  delay(10000);
+  RGB_color(0, 255, 255); // Cyan
+  delay(10000);
+  RGB_color(255, 0, 255); // Magenta
+  delay(10000);
+  RGB_color(255, 255, 0); // Yellow
+  delay(10000);
+  RGB_color(255, 255, 255); // White
+  delay(10000);
+  RGB_color(0, 0, 0); // off
+ }
+ // pause for one-half second
+ delay(500);
+}
+
+void RGB_color(int red_light_value, int green_light_value, int blue_light_value)
+ {
+  analogWrite(red_light_pin, red_light_value);
+  analogWrite(green_light_pin, green_light_value);
+  analogWrite(blue_light_pin, blue_light_value);
+}
