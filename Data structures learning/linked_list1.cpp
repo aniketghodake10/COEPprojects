@@ -25,7 +25,7 @@ void insert_at_end(int x){
 
 }
 
-void insert_at_any_position(int x, int n){          ///0,1,2.....
+void insert_at_any_position(int x, int n){          ///linked list indices - 0,1,2.....
     int count = 2;
     Node* temp = new Node();
     temp->data = x;
@@ -46,7 +46,7 @@ void insert_at_any_position(int x, int n){          ///0,1,2.....
 
 }
 
-void delete_at_any_position(int n){       ///0,1,2.....
+void delete_at_any_position(int n){       ///linked list indices - 0,1,2.....
     int count = 2;
 
     Node* temp4 = head;
@@ -66,7 +66,7 @@ void delete_at_any_position(int n){       ///0,1,2.....
 
 }
 
-void reverse_linked_list(){       ///0,1,2.....
+void reverse_linked_list(){       ///linked list indices - 0,1,2.....
     Node* head2 = head;
 
     int count = 0;
@@ -76,8 +76,7 @@ void reverse_linked_list(){       ///0,1,2.....
         count++;
     }
 
-    Node* temp6;
-    Node* temp7;
+    Node *temp6, *temp7;
     for (int i=count;i>=0;i--){
         temp6 = head2;
         temp7 = head;
@@ -100,6 +99,46 @@ void reverse_linked_list(){       ///0,1,2.....
 head = head2;
 }
 
+void reverse_linked_list2(){       ///linked list indices - 0,1,2.....
+    Node *current, *prev, *next;
+    current = head;
+    prev = NULL;
+    while(current!=NULL){
+        next = current->link;
+        if (current->link == NULL){
+            head = current;
+        }
+        current->link = prev;
+        prev = current;
+        current = next;
+    }
+}
+
+void print_linked_list_recursion(Node* p){       ///linked list indices - 0,1,2.....
+    if (p == NULL) return;
+
+    //reverse print
+    // print_linked_list_recursion(p->link);
+    // printf("%d ", p->data);
+
+    //normal print      
+    printf("%d ", p->data);
+    print_linked_list_recursion(p->link);
+}
+
+void print_linked_list(Node* temp2){       ///linked list indices - 0,1,2.....
+    while(temp2 != NULL){
+        printf("%d ", temp2->data);
+        temp2 = temp2->link;
+    }
+}
+
+void reverse_linked_list_recursion(Node* prev, Node* current){       ///linked list indices - 0,1,2.....
+    if (current->link == NULL) {head = current;current->link = prev;return;}
+    reverse_linked_list_recursion(current, current->link);
+    current->link = prev;
+}
+
 int main(){
 
     head = NULL;
@@ -113,22 +152,14 @@ int main(){
         insert_at_end(x);
     }
 
-    insert_at_any_position(100,5); ///0,1,2.....
-    delete_at_any_position(3); ///0,1,2.....
+    insert_at_any_position(100,5);     ///linked list indices - 0,1,2.....
+    delete_at_any_position(3);        ///linked list indices - 0,1,2.....
     
     printf("\nList = ");
-    Node* temp2 = head;
-    while(temp2 != NULL){
-        printf("%d ", temp2->data);
-        temp2 = temp2->link;
-    }
-reverse_linked_list();
-printf("\n");
-printf("\nreverse List = ");
-    temp2 = head;
-    while(temp2 != NULL){
-        printf("%d ", temp2->data);
-        temp2 = temp2->link;
-    }
+    print_linked_list(head);
+    reverse_linked_list_recursion(NULL, head);
+    printf("\nreverse List = ");
+    print_linked_list(head);
+
 printf("\n");
 }
