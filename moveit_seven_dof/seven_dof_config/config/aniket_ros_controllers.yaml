@@ -1,0 +1,51 @@
+#manipulator:
+# Publish all joint states -----------------------------------
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 100  
+  
+  # Position Controllers ---------------------------------------
+shoulder_pan_joint_controller:
+  type: FollowJointTrajectory
+  joint: shoulder_pan_joint
+  pid: {p: 1000000.0, i: 0.0, d: 0.0}
+
+shoulder_pitch_joint_controller:
+  type: FollowJointTrajectory
+  joint: shoulder_pitch_joint
+  pid: {p: 500.0, i: 0.00, d: 0}
+
+elbow_roll_joint_controller:
+  type: FollowJointTrajectory
+  joint: elbow_roll_joint
+  pid: {p: 500.0, i: 0, d: 0.0}
+
+elbow_pitch_joint_controller:
+  type: FollowJointTrajectory
+  joint: elbow_pitch_joint
+  pid: {p: 700.0, i: 0, d: 0.0}
+
+wrist_roll_joint_controller:
+  type: FollowJointTrajectory
+  joint: wrist_roll_joint
+  pid: {p: 700.0, i: 0, d: 0.0}
+
+wrist_pitch_joint_controller:
+  type: FollowJointTrajectory
+  joint: wrist_pitch_joint
+  pid: {p: 500.0, i: 0.0, d: 0.0}
+
+gripper_roll_joint_controller:
+  type: FollowJointTrajectory
+  joint: gripper_roll_joint
+  pid: {p: 500.0, i: 0.0, d: 0.0}
+
+finger_joint1_controller:
+  type: FollowJointTrajectory
+  joint: finger_joint1
+  pid: {p: 200.0, i: 0.0, d: 0.0}
+   
+finger_joint2_controller:
+  type: FollowJointTrajectory
+  joint: finger_joint2
+  pid: {p: 200.0, i: 0.0, d: 0.0}

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find seven_dof_config)/config/aniket_ros_controllers.yaml" command="load"/>
+
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="shoulder_pan_joint_controller
+                          shoulder_pitch_joint_controller
+                          elbow_roll_joint_controller
+                          elbow_pitch_joint_controller
+                          wrist_roll_joint_controller
+                          wrist_pitch_joint_controller
+                          gripper_roll_joint_controller
+                          finger_joint1_controller
+                          finger_joint2_controller
+                          joint_state_controller
+                          "/>
+
+</launch>
